@@ -37,9 +37,12 @@ public class AllowController : MonoBehaviour
 
         if (d < r1 + r2)
         {
-            // 監督スプリクトにキャラと衝突したことを伝える
+            //監督スプリクトにキャラと衝突したことを伝える
             GameObject director = GameObject.Find("GameDirector");
             director.GetComponent<GameDirector>().DecreaseHp();
+
+            //director.GetComponent<GameDirector>().Gameover();
+
 
             Destroy(gameObject);
         }
