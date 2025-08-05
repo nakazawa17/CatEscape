@@ -22,17 +22,25 @@ public class AllowController : MonoBehaviour
             Destroy(gameObject);
         }
 
-        // 矢の位置(x=0,y=3.2)
+        // 矢の位置
         Vector2 p1 = transform.position;
-        // 
+        // 操作キャラクターの位置
         Vector2 p2 = this.player.transform.position;
+        // ベクトルの引き算
         Vector2 dir = p1 - p2;
+        // キャラクターと矢までの距離
         float d = dir.magnitude;
+        // 矢のあたり判定の半径
         float r1 = 0.5f;
+        // キャラのあたり判定の半径
         float r2 = 1.0f;
 
         if (d < r1 + r2)
         {
+            // 監督スプリクトにキャラと衝突したことを伝える
+            GameObject director = GameObject.Find("GameDirector");
+            director.GetComponent<GameDirector>().DecreaseHp();
+
             Destroy(gameObject);
         }
     }
